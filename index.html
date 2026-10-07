@@ -260,10 +260,94 @@
     </div>
   </div>
 
-  <div class="modal" id="praise-modal">
+  <div class="modal" id="praise-modal" style="display: none;">
     <div class="modal-content">
       <img src="" id="modal-img-target" class="modal-img" alt="Foto Pop-up">
       <p class="modal-praise" id="modal-text-target"></p>
       <button class="btn-close-modal" onclick="closePopup()">Tutup</button>
     </div>
   </div>
+
+  <script>
+    const popupData = [
+      {
+        img: 'https://lh3.googleusercontent.com/d/1EKuoEZv4dQpshimJ80BNE0NCgyu8KefI',
+        praise: 'Sumpah ya sayang, pas kamu pake kacamata gini jujur cantiknya nambah berkali-kali lipat 😭 gemes banget ih!'
+      },
+      {
+        img: 'https://lh3.googleusercontent.com/d/1Nj_Ho7FIGZXS0GPJCtasExG0lNA4ru8z',
+        praise: 'Liat mata kamu di foto ini tuh bikin aku kangen banget... adem aja gitu kalo ngeliatin muka sayang kayak gini 🥺❤️'
+      },
+      {
+        img: 'https://lh3.googleusercontent.com/d/1Jc45lgCq8h57hULmYPMqzMVTovP5jtVI',
+        praise: 'Lagi rebahan pake piyama aja kenapa bisa se-imut ini sih sayang?? Stiker bibirnya lucu banget, pingin ngusel 😭🤏'
+      },
+      {
+        img: 'https://lh3.googleusercontent.com/d/1wEweGzdt_CAqcj2R611AwzprOKyp7dGe',
+        praise: 'Senyum tipis kamu yang begini nih yang selalu bikin aku kepikiran terus tiap hari... cantik banget pacar aku ❤️'
+      }
+    ];
+
+    function openPopup(index) {
+      const modal = document.getElementById('praise-modal');
+      const imgTarget = document.getElementById('modal-img-target');
+      const textTarget = document.getElementById('modal-text-target');
+      
+      if(modal && imgTarget && textTarget) {
+        imgTarget.src = popupData[index].img;
+        textTarget.innerText = popupData[index].praise;
+        modal.style.display = 'flex';
+      }
+    }
+
+    function closePopup() {
+      const modal = document.getElementById('praise-modal');
+      if(modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    function showLetter() {
+      const letterBox = document.getElementById('letter-box');
+      const btnLetter = document.getElementById('btn-letter');
+      
+      if(letterBox) letterBox.style.display = 'block';
+      if(btnLetter) btnLetter.style.display = 'none';
+    }
+
+    function moveBtnNo() {
+      const btnNo = document.getElementById('btn-no');
+      if(btnNo) {
+        const x = Math.random() * (window.innerWidth - 120);
+        const y = Math.random() * (window.innerHeight - 80);
+        
+        btnNo.style.position = 'fixed';
+        btnNo.style.left = Math.max(20, Math.min(x, window.innerWidth - 130)) + 'px';
+        btnNo.style.top = Math.max(20, Math.min(y, window.innerHeight - 90)) + 'px';
+      }
+    }
+
+    function forgiveMe() {
+      const mainCard = document.getElementById('main-card');
+      if(mainCard) {
+        mainCard.innerHTML = `
+          <div style="animation: popIn 0.4s ease-out;">
+            <h1 style="font-size: 2.2rem; margin-bottom: 10px; color: #ff3366;">YEAYYYYY! 🎉🥰🥳</h1>
+            <p style="font-size: 1.05rem; line-height: 1.6; color: #444; margin-bottom: 20px;">
+              Makasih banyak yaa sayang udah mau maafin aku! Aku janji bakal lebih ngertiin kamu lagi dan ga bikin kamu kesal lagi ❤️
+            </p>
+            <div style="background: #fff0f5; padding: 18px; border-radius: 16px; border: 2px dashed #ff758c; margin-top: 15px;">
+              <p style="font-weight: bold; color: #d83a6f; font-size: 1rem; margin-bottom: 8px;">
+                Eh tapi sebagai syarat dimaafin... 🤭
+              </p>
+              <p style="font-size: 0.95rem; color: #555;">
+                Boleh minta <b>PAP wajah manis & imut kamu yang paling baru</b> sekarang ga? Kirim ke chat aku yaa! 📲😜✨
+              </p>
+            </div>
+          </div>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
